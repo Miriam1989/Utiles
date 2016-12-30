@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Utiles</string>
     <string name="title_activity_referencia">ReferenciaActivity</string>
+    <string name="login_message_error_user">Llena el campo user</string>
+    <string name="login_message_error_pass">Llena el campo password</string>
+    <string name="login_message_validate_data">Validando datos</string>
+    <string name="login_message_error_school">Llena el campo school</string>
+    <string name="alert_dialog_message_positive">Confirmar</string>
+    <string name="alert_dialog_message_negative">Cancelar</string>
+    <string name="alert_dialog_title">Numero generado...</string>
+
+
 </resources>
