@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -94,6 +95,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     //</editor-fold>
 
     //<editor-fold des=" * * * * *  L I F E C Y C L E  * * * * * ">
+
+    @Override
+    protected void onStart() {
+        Log.d("LoginActivity","Enter onStart");
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d("LoginActivity","Enter onResume");
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.d("LoginActivity","Enter onPause");
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.d("LoginActivity","Enter onStop");
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.d("LoginActivity","Enter onDestroy");
+        super.onDestroy();
+    }
 
     //</editor-fold>
 }
