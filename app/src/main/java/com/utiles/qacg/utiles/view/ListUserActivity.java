@@ -23,6 +23,8 @@ import com.utiles.qacg.utiles.services.InitBDServices;
 import java.util.List;
 import java.util.Random;
 
+import static java.lang.String.valueOf;
+
 public class ListUserActivity extends AppCompatActivity implements View.OnClickListener, ListUserCallBacks {
 
     //<editor-fold des=" * * * * *  U I    R E F E R E N C E S  * * * * * ">
@@ -31,6 +33,7 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
 
     //<editor-fold des=" * * * * *  I N T E R N A L   V A R I A B L E S  * * * * * ">
     private String userName;
+    private String numberRandom;
     private UtilsAdapter utilsAdapter;
     private List<Utiles> listUtils;
     //</editor-fold>
@@ -44,17 +47,25 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_user);
-       mListUserCallback=this;
+        mListUserCallback = this;
         recoverIntentValue();
-        getSupportActionBar().setTitle(userName);
+        setTitleActionBar(numberRandom);
         initElements();
+    }
 
+    private void setTitleActionBar(String num) {
+        if(num == null){
+            num="";
+        }
+
+        getSupportActionBar().setTitle(userName + " " + num);
     }
 
     //<editor-fold des=" * * * * * R E C O V E R   V A L U E   I N T E N T   * * * * * ">
     private void recoverIntentValue() {
-        if(getIntent().getExtras()!= null) {
+        if (getIntent().getExtras() != null) {
             userName = (String) getIntent().getExtras().get("parametro");
+
         }
     }
 
@@ -72,7 +83,7 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
     private void initRecyclerView() {
 
         listUtils = Select.from(Utiles.class).list();
-        utilsAdapter = new UtilsAdapter(this,listUtils,mListUserCallback);
+        utilsAdapter = new UtilsAdapter(this, listUtils, mListUserCallback);
         rv_utils.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         rv_utils.setItemAnimator(new DefaultItemAnimator());
         rv_utils.setHasFixedSize(true);
@@ -90,7 +101,7 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.item_random:
                 showAlertDialog();
                 break;
@@ -110,28 +121,25 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
     }
 
 
-
     @Override
     public void callIntent(Long id) {
         Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra("idUtil",id);
+        intent.putExtra("idUtil", id);
         startActivity(intent);
     }
     //</editor-fold>
 
     //<editor-fold des=" * * * * *  M E T O D O S  * * * * * ">
-    public void showAlertDialog(){
+    public void showAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-
-
-
         builder.setTitle(R.string.alert_dialog_title);
-        builder.setMessage(generateNumberRandom());
+        numberRandom=generateNumberRandom();
+        builder.setMessage(numberRandom);
         builder.setPositiveButton(getString(R.string.alert_dialog_message_positive), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                setTitleActionBar(numberRandom);
             }
         });
         builder.setNegativeButton(getString(R.string.alert_dialog_message_negative), new DialogInterface.OnClickListener() {
@@ -157,12 +165,13 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
         String strNumberRandom;
 
         if (numberRandom >= 0 && numberRandom <= 9) {
-            strNumberRandom = "0" + String.valueOf(numberRandom);
+            strNumberRandom = "0" + valueOf(numberRandom);
         } else {
-            strNumberRandom = String.valueOf(numberRandom);
+            strNumberRandom = valueOf(numberRandom);
         }
-        return  strNumberRandom;
+        return strNumberRandom;
     }
+
 
     //</editor-fold>
 

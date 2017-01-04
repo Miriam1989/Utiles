@@ -19,10 +19,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextInputEditText tiet_pass;
     private Button btn_enter;
     private TextInputEditText tiet_school;
+
+
     //</editor-fold>
 
     //<editor-fold des=" * * * * *  I N T E R N A L   V A R I A B L E S  * * * * * ">
+
     //</editor-fold>
+
 
     //<editor-fold des=" * * * * *  S E R V I C E S  A N D  C A L L B A C K S  * * * * * ">
     private LoginServices loginServices;
