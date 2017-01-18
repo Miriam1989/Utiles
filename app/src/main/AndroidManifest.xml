@@ -34,8 +34,13 @@
             android:name=".ReferenciaActivity"
             android:label="@string/title_activity_referencia"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".view.DetailActivity">
+        <activity
+            android:name=".view.DetailActivity"
+            android:parentActivityName=".view.ListUserActivity"></activity>
+        <activity
+            android:name=".KeyColor"
+            android:label="@string/title_activity_key_color"
+            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
     </application>

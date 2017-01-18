@@ -8,6 +8,7 @@
     <string name="alert_dialog_message_positive">Confirmar</string>
     <string name="alert_dialog_message_negative">Cancelar</string>
     <string name="alert_dialog_title">Numero generado...</string>
+    <string name="title_activity_key_color">KeyColor</string>
 
 
 </resources>

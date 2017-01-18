@@ -46,7 +46,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nombre"
-                    android:focusable="false"
                     />
                 </android.support.design.widget.TextInputLayout>
 
@@ -59,7 +58,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Tamaño"
-                    android:focusable="false"
                     />
             </android.support.design.widget.TextInputLayout>
 
@@ -72,7 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Color"
-                    android:focusable="false"
+
                     />
             </android.support.design.widget.TextInputLayout>
 
@@ -85,7 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Marca"
-                    android:focusable="false"
+
                     />
             </android.support.design.widget.TextInputLayout>
 
@@ -98,7 +96,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Precio"
-                    android:focusable="false"
+                    android:inputType="number"
+
                     />
             </android.support.design.widget.TextInputLayout>
 

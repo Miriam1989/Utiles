@@ -2,6 +2,7 @@ package com.utiles.qacg.utiles.view;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
 
     //<editor-fold des=" * * * * *  U I    R E F E R E N C E S  * * * * * ">
     private RecyclerView rv_utils;
+    private FloatingActionButton fab_new;
     //</editor-fold>
 
     //<editor-fold des=" * * * * *  I N T E R N A L   V A R I A B L E S  * * * * * ">
@@ -54,8 +56,8 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void setTitleActionBar(String num) {
-        if(num == null){
-            num="";
+        if (num == null) {
+            num = "";
         }
 
         getSupportActionBar().setTitle(userName + " " + num);
@@ -77,6 +79,8 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
         rv_utils = (RecyclerView) findViewById(R.id.rv_utils);
         initBDServices = new InitBDServices();
         initBDServices.insertUtils();
+        fab_new = (FloatingActionButton) findViewById(R.id.fab_new);
+        fab_new.setOnClickListener(this);
         initRecyclerView();
     }
 
@@ -96,6 +100,11 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
     //<editor-fold des=" * * * * *  O N   C L I C K  E L E M E N T S  * * * * * ">
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.fab_new:
+                callIntent();
+                break;
+        }
 
     }
 
@@ -121,12 +130,6 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
     }
 
 
-    @Override
-    public void callIntent(Long id) {
-        Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra("idUtil", id);
-        startActivity(intent);
-    }
     //</editor-fold>
 
     //<editor-fold des=" * * * * *  M E T O D O S  * * * * * ">
@@ -134,7 +137,7 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setTitle(R.string.alert_dialog_title);
-        numberRandom=generateNumberRandom();
+        numberRandom = generateNumberRandom();
         builder.setMessage(numberRandom);
         builder.setPositiveButton(getString(R.string.alert_dialog_message_positive), new DialogInterface.OnClickListener() {
             @Override
@@ -176,6 +179,19 @@ public class ListUserActivity extends AppCompatActivity implements View.OnClickL
     //</editor-fold>
 
     //<editor-fold des=" * * * * *  E V E N T     V I E W  * * * * * ">
+
+    @Override
+    public void callIntent(Long id) {
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra("idUtil", id);
+        startActivity(intent);
+    }
+
+
+    public void callIntent() {
+        Intent intent = new Intent(this, DetailActivity.class);
+        startActivity(intent);
+    }
     //</editor-fold>
 
     //<editor-fold des=" * * * * *  L I F E C Y C L E  * * * * * ">
